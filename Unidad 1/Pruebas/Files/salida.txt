@@ -1,0 +1,15 @@
+ El volumen de la unidad C es Boot
+ El n£mero de serie del volumen es: AE08-EBD4
+
+ Directorio de C:\Users\Tarde\eclipse-workspace\PSP\Unidad 1\Pruebas
+
+10/10/2024  19:36    <DIR>          .
+10/10/2024  17:34    <DIR>          ..
+10/10/2024  17:34               396 .classpath
+10/10/2024  17:34               383 .project
+10/10/2024  17:34    <DIR>          .settings
+10/10/2024  17:35    <DIR>          bin
+10/10/2024  19:42    <DIR>          Files
+10/10/2024  17:35    <DIR>          src
+               2 archivos            779 bytes
+               6 dirs  268.949.491.712 bytes libres
