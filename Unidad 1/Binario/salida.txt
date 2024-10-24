@@ -1,0 +1,2 @@
+Introduce un numero: 
+15 en binario es: 1111

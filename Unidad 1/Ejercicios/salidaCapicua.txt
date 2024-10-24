@@ -1,0 +1,2 @@
+Introduce un numero por teclado: 
+3443 es capicua
