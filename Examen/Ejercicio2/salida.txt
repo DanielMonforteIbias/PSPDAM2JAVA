@@ -1,0 +1,2 @@
+Introduce un numero: 
+La suma de las cifras de 45 es 9
