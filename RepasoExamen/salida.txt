@@ -1,0 +1,2 @@
+Introduce un número: 
+29 es primo
