@@ -26,7 +26,6 @@ public class Ejemplo2URL {
 		in.close();
 	} catch (IOException e) {
 		e.printStackTrace();
-	}
-	
+	}	
 	}
 }
