@@ -15,7 +15,6 @@ public class Servidor0 {
 			Socket cliente1=servidor.accept();
 			Socket cliente2=servidor.accept();
 			servidor.close();
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
