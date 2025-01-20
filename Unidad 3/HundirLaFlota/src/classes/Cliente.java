@@ -20,17 +20,19 @@ public class Cliente {
 			DataOutputStream flujoSalida=new DataOutputStream(cliente.getOutputStream());
 			DataInputStream flujoEntrada=new DataInputStream(cliente.getInputStream());
 			String numeroBinario="", resultado="";
+			int i=1;
 			do {
-				System.out.println("Introduce una posicion: ");
+				System.out.println("Intento "+i+". Introduce una posicion: ");
 				numeroBinario=s.next();
 				flujoSalida.writeUTF(numeroBinario);
 				resultado=flujoEntrada.readUTF();
 				System.out.println("Recibiendo resultado del servidor: "+resultado);
 				if(resultado.equals("Hundido"))contadorAciertos++;
 				intentos--;
+				i++;
 			}while(intentos>0 && contadorAciertos<10);
-			if(intentos==0) System.out.println("El cliente se ha quedado sin intentos. Desconectando del servidor");
-			else if(contadorAciertos==10)System.out.println("El cliente ha encontrado todos los barcos. Desconectando del servidor");
+			if(contadorAciertos==10)System.out.println("El cliente ha encontrado todos los barcos. Desconectando del servidor");
+			else if(intentos==0) System.out.println("El cliente se ha quedado sin intentos. Desconectando del servidor");
 			flujoEntrada.close();
 			flujoSalida.close();
 			cliente.close();

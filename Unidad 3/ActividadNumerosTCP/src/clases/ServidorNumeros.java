@@ -15,14 +15,24 @@ public class ServidorNumeros {
 			System.out.println("Esperando al cliente.....");
 			Socket cliente = servidor.accept();
 			ObjectOutputStream outObjeto = new ObjectOutputStream(cliente.getOutputStream());
+			ObjectInputStream inObjeto = new ObjectInputStream(cliente.getInputStream());
 			Numeros numero = new Numeros();
+			boolean seguir=true;
 			do {
-				ObjectInputStream inObjeto = new ObjectInputStream(cliente.getInputStream());
 				numero = (Numeros) inObjeto.readObject();
-				System.out.println("Recibido: "+numero.getNumero());
-				numero = calcularAtributosNumero(numero);
-			} while (numero.getNumero() > 0);
-			System.out.println("0 detectado, terminando servidor");
+				if(numero!=null) {
+					System.out.println("Recibido: "+numero.getNumero());
+					numero = calcularAtributosNumero(numero);
+					outObjeto.writeObject(numero);
+					if(numero.getNumero() <=0) seguir=false;
+				}
+				else {
+					System.out.println("Recibido dato no valido");
+					outObjeto.writeObject(null);
+				}
+			} while (seguir);
+			System.out.println("Terminando servidor");
+			outObjeto.close();
 			servidor.close();
 		} catch (IOException e) {
 			e.printStackTrace();

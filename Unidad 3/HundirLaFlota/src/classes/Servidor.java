@@ -38,8 +38,8 @@ public class Servidor {
 				flujoSalida.writeUTF(resultado);
 				intentos--;
 			}while(s.tablero.getNumBarcos()>0 && intentos>0);
-			if(s.tablero.getNumBarcos()==0)System.out.println("El cliente ha encontrado todos los barcos");
-			else if(intentos==0)System.out.println("El cliente se ha quedado sin intentos");
+			if(s.tablero.getNumBarcos()==0)System.out.println("El cliente ha encontrado todos los barcos. Desconectando servidor");
+			else if(intentos==0)System.out.println("El cliente se ha quedado sin intentos. Desconectando servidor");
 			entrada.close();
 			flujoEntrada.close();
 			salida.close();

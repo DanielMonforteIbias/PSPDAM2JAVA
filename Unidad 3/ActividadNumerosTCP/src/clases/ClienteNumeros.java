@@ -16,15 +16,33 @@ public class ClienteNumeros {
 		//Flujo de entrada para objetos
 		ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
 		ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());
-		Numeros numero=new Numeros();
+		Numeros numero=new Numeros(), resultado=new Numeros();
+		int n=0;
+		boolean seguir=true;
 		do {
 			System.out.println("Introduce un numero: ");
-			int n=s.nextInt();
-			numero.setNumero(n);
-			salida.writeObject(numero);
-		}while(numero.getNumero()>0);
+			if(s.hasNextInt()) {
+				n=s.nextInt();
+				numero.setNumero(n);
+				salida.writeObject(numero);
+			}
+			else {
+				salida.writeObject(null);
+				s.next(); //Saltamos al siguiente del escaner para no entrar en un bucle infinito
+			}
+			salida.flush();
+			salida.reset();
+			resultado=(Numeros)entrada.readObject();
+			if(resultado!=null) {
+				System.out.println("Cuadrado de "+resultado.getNumero()+": "+resultado.getCuadrado()+", Cubo de "+resultado.getNumero()+": "+resultado.getCubo());
+				if(numero.getNumero()<=0) seguir=false;
+			}
+			else System.out.println("El dato enviado al servidor no fue valido");
+		}while(seguir);
+		System.out.println("Terminando cliente");
 		entrada.close();
 		salida.close();
 		cliente.close();
+		s.close();
 	}
 }
