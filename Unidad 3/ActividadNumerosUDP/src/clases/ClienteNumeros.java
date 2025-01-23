@@ -20,7 +20,11 @@ public class ClienteNumeros {
 		int numero=0;
 		do {
 			System.out.println("Introduce un numero: ");
-			numero=s.nextInt();
+			if(s.hasNextInt()) numero=s.nextInt();
+			else {
+				s.next(); //Evitamos bucle infinito
+				numero=0; //Hacemos que numero sea 0 para terminar la ejecucion
+			}
 			Numeros nObjeto=new Numeros();
 			nObjeto.setNumero(numero);
 			//De objeto a bytes
@@ -55,6 +59,7 @@ public class ClienteNumeros {
 		}while(numero>0);
 		
 		clientSocket.close();
+		s.close();
 		System.out.println("Socket cliente cerrado");
 	}
 }
