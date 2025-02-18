@@ -1,6 +1,5 @@
 package clases;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -54,5 +53,6 @@ public class ClientePalabraSecreta {
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
+		s.close();
 	}
 }

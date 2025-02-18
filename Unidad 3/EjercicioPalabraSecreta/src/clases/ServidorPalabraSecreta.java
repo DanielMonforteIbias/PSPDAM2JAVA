@@ -1,15 +1,12 @@
 package clases;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import javax.naming.ReferralException;
 
 public class ServidorPalabraSecreta {
 	static String palabraSecreta="gato";
@@ -36,7 +33,7 @@ public class ServidorPalabraSecreta {
 				String palabraCliente=flujoEntrada.readUTF();
 				System.out.println("Palabra recibida del cliente: "+palabraCliente);
 				if(palabraCliente.equalsIgnoreCase(palabraSecreta)){
-					mensaje="Has ganado! La palabra secreta era "+palabraCliente;
+					mensaje="Has ganado! La palabra secreta era "+palabraSecreta;
 					correcto=true;
 					seguir=false;
 				}
